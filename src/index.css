@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Optional: Ensure full height for the app container */
+body, html {
+  height: 100%;
+  margin: 0;
+  background-color: #F7F5F0; /* Matches our theme */
+}
