@@ -12,7 +12,7 @@ import {
 
 // --- Assets & Theme ---
 const FONTS = `
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Homemade+Apple&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Reenie+Beanie&family=La+Belle+Aurore&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Homemade+Apple&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Reenie+Beanie&family=La+Belle+Aurore&family=Noto+Sans+Devanagari:wght@400;600&display=swap');
 `;
 
 // --- AUDIO DATA ---
@@ -244,7 +244,7 @@ const RoseGame = ({ onWin }) => {
       className="relative w-full h-80 bg-stone-100 overflow-hidden border border-stone-300 rounded-sm cursor-none touch-none"
     >
       <div className="absolute top-4 right-4 font-['Playfair_Display'] text-xl italic flex gap-4">
-        <span>Caught: {score}/10</span>
+        <span>Pakadle: {score}/10</span>
       </div>
       
       {items.map(item => (
@@ -262,7 +262,7 @@ const RoseGame = ({ onWin }) => {
         style={{ left: `calc(${basketX}% - 2rem)` }}
       />
       <div className="absolute bottom-16 left-0 right-0 text-center pointer-events-none opacity-40 text-xs">
-        Watch out for thorns! (X)
+        Katyanpasun sawdhan! (X)
       </div>
     </div>
   );
@@ -294,7 +294,7 @@ const ProposeGame = ({ onWin }) => {
     <div className="flex flex-col items-center justify-center h-80 w-full relative overflow-hidden bg-stone-50/50">
       {!success ? (
         <>
-          <p className="absolute top-4 font-['Playfair_Display'] text-xl text-stone-600 animate-pulse">Drag the ring to my hand...</p>
+          <p className="absolute top-4 font-['Playfair_Display'] text-xl text-stone-600 animate-pulse">Angathi majhya botat ghal...</p>
           <div ref={fingerRef} className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-50">
              <svg width="100" height="150" viewBox="0 0 100 150" className="fill-stone-300">
                <path d="M20,150 L20,80 Q20,60 35,60 L35,150" />
@@ -313,8 +313,8 @@ const ProposeGame = ({ onWin }) => {
         </>
       ) : (
         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="text-center">
-           <h2 className="font-['Playfair_Display'] text-4xl text-[#8B3A3A] mb-2">Yes!</h2>
-           <p className="font-['Cormorant_Garamond'] text-stone-500">I'm yours.</p>
+           <h2 className="font-['Playfair_Display'] text-4xl text-[#8B3A3A] mb-2">Ho!</h2>
+           <p className="font-['Cormorant_Garamond'] text-stone-500">Mi nehmich tujha asel.</p>
         </motion.div>
       )}
     </div>
@@ -363,7 +363,7 @@ const ChocolateGame = ({ onWin }) => {
 
   return (
     <div className="h-80 w-full flex flex-col items-center justify-center">
-      <p className="mb-6 text-stone-500 text-sm uppercase tracking-widest">Match the Sweets</p>
+      <p className="mb-6 text-stone-500 text-sm uppercase tracking-widest">God-God jodya lava</p>
       <div className="grid grid-cols-4 gap-3">
         {cards.map((card, index) => {
           const isFlipped = flipped.includes(index) || matched.includes(index);
@@ -420,7 +420,7 @@ const TeddyGame = ({ onWin }) => {
   return (
     <div className="relative w-full h-96 flex flex-col items-center justify-center">
       <div className="flex justify-between w-full max-w-xs mb-4 text-sm text-stone-500 font-bold uppercase tracking-widest">
-        <span>Find the RED NOSE Bear</span>
+        <span>LAL Nak aslela Teddy shodha</span>
         <span className={timeLeft < 5 ? "text-red-500" : ""}>{timeLeft}s</span>
       </div>
       <div className="grid grid-cols-5 gap-3">
@@ -446,7 +446,7 @@ const PromiseGame = ({ onWin }) => {
     <div className="flex flex-col items-center justify-center h-80 w-full px-8 space-y-8">
       <Lock size={48} className={`transition-colors duration-500 ${input === phrase ? 'text-green-600' : 'text-stone-400'}`} />
       <div className="w-full text-center space-y-4">
-        <p className="font-['Cormorant_Garamond'] text-lg tracking-widest text-stone-500">TYPE TO UNLOCK:</p>
+        <p className="font-['Cormorant_Garamond'] text-lg tracking-widest text-stone-500">TYPE KARA UNLOCK KARNYASATHI:</p>
         <div className="font-['Playfair_Display'] text-2xl md:text-3xl text-stone-800 tracking-widest border-b border-stone-300 pb-2 min-h-[3rem]">{phrase.split('').map((char, i) => (<span key={i} className={i < input.length ? "text-[#8B3A3A]" : "opacity-30"}>{char}</span>))}</div>
         <input type="text" value={input} onChange={handleChange} className="w-full text-center bg-transparent border-none outline-none text-transparent caret-[#8B3A3A] absolute inset-0 h-full cursor-text" autoFocus />
         <p className="text-xs text-stone-400 uppercase tracking-widest">(Type "I PROMISE TO STAY")</p>
@@ -461,19 +461,19 @@ const HugGame = ({ onWin }) => {
   const scoreRef = useRef(0);
   const [warmth, setWarmth] = useState(30);
   const [score, setScore] = useState(0);
-  const [message, setMessage] = useState("Cold... need hugs!");
+  const [message, setMessage] = useState("Thandi vajtey... Mithi mar na!");
 
   useEffect(() => {
     const timer = setInterval(() => {
       warmthRef.current = Math.max(0, warmthRef.current - 0.4);
       if (warmthRef.current > 65 && warmthRef.current < 95) {
         scoreRef.current = Math.min(100, scoreRef.current + 0.4);
-        setMessage("Perfect warmth... ❤️");
+        setMessage("Ekdam Ubbdar... ❤️");
       } else if (warmthRef.current >= 95) {
         scoreRef.current = Math.max(0, scoreRef.current - 0.2); 
-        setMessage("Too tight! Loosen up!");
+        setMessage("Khup ghatt hotay!");
       } else {
-        setMessage("I'm cold... Hug me!");
+        setMessage("Thandi vajtey... Mithi mar na!");
       }
       setWarmth(warmthRef.current);
       setScore(scoreRef.current);
@@ -486,10 +486,10 @@ const HugGame = ({ onWin }) => {
 
   return (
     <div className="flex flex-col items-center justify-center h-80 w-full select-none px-4">
-      <div className="text-center mb-6 space-y-1"><p className="font-['Cormorant_Garamond'] text-xl font-bold tracking-widest text-stone-600 uppercase">{message}</p><p className="text-xs text-stone-400">Keep the heart glowing (Red Zone)</p></div>
+      <div className="text-center mb-6 space-y-1"><p className="font-['Cormorant_Garamond'] text-xl font-bold tracking-widest text-stone-600 uppercase">{message}</p><p className="text-xs text-stone-400">Heart la Red Zone madhe thev</p></div>
       <div className="flex gap-8 items-end h-48 w-full max-w-xs justify-center relative">
          <div className="w-16 h-full bg-stone-200 rounded-full relative overflow-hidden border border-stone-300"><div className="absolute bottom-[65%] w-full h-[30%] bg-rose-100/50 z-10 border-y border-rose-200 dashed"></div><motion.div className={`absolute bottom-0 w-full transition-colors duration-300 ${warmth > 95 ? 'bg-red-800' : warmth > 65 ? 'bg-[#8B3A3A]' : 'bg-blue-300'}`} style={{ height: `${warmth}%` }} /><div className="absolute inset-0 flex flex-col justify-end pb-2 items-center z-20 pointer-events-none"><span className="text-white drop-shadow-md text-xs font-bold">{Math.round(warmth)}%</span></div></div>
-         <div className="h-full flex flex-col justify-end space-y-2"><div className="w-4 h-full bg-stone-100 rounded-full overflow-hidden relative"><motion.div className="absolute bottom-0 w-full bg-green-500" style={{ height: `${score}%` }} /></div><span className="text-[10px] uppercase text-stone-400 rotate-90 origin-left translate-x-2">Progress</span></div>
+         <div className="h-full flex flex-col justify-end space-y-2"><div className="w-4 h-full bg-stone-100 rounded-full overflow-hidden relative"><motion.div className="absolute bottom-0 w-full bg-green-500" style={{ height: `${score}%` }} /></div><span className="text-[10px] uppercase text-stone-400 rotate-90 origin-left translate-x-2">Pragati</span></div>
       </div>
       <motion.button whileTap={{ scale: 0.9 }} onClick={handleHug} className="mt-8 w-20 h-20 bg-[#8B3A3A] rounded-full shadow-lg flex items-center justify-center text-white active:bg-rose-800 transition-colors"><Heart size={32} className="fill-current" /></motion.button>
     </div>
@@ -516,7 +516,7 @@ const FinalSurpriseGame = ({ onWin }) => (
     <motion.div whileHover={{ scale: 1.05, rotate: 2 }} whileTap={{ scale: 0.95 }} animate={{ y: [0, -10, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} className="relative">
        <div className="w-56 h-40 bg-[#8B3A3A] rounded-lg shadow-2xl flex items-center justify-center relative overflow-hidden"><div className="absolute top-0 left-0 w-full h-0 border-l-[112px] border-l-transparent border-r-[112px] border-r-transparent border-t-[90px] border-t-red-900/40 z-10"></div><div className="w-12 h-12 rounded-full bg-red-950 shadow-lg flex items-center justify-center z-20 mt-4 border-2 border-red-800/50"><Heart className="text-red-900/50 fill-red-900/50" size={24} /></div></div>
     </motion.div>
-    <div className="mt-12 text-center space-y-2"><h3 className="font-['Playfair_Display'] text-2xl">A Letter for You</h3><p className="font-['Cormorant_Garamond'] italic text-lg text-stone-400 animate-pulse">Tap to break the seal</p></div>
+    <div className="mt-12 text-center space-y-2"><h3 className="font-['Playfair_Display'] text-2xl">Jayu sathi patra</h3><p className="font-['Cormorant_Garamond'] italic text-lg text-stone-400 animate-pulse">Ughadun tar bagh...</p></div>
   </div>
 );
 
@@ -527,16 +527,16 @@ const RoseReveal = ({ data }) => (
     <FloatingDoodles />
     <div className="relative z-10">
       <Tape className="-top-3 left-12 -rotate-3" />
-      <Polaroid color={data.color} rotation="-2deg" delay={0.2} caption="My beautiful flower">
+      <Polaroid color={data.color} rotation="-2deg" delay={0.2} caption="Majhya Sunder Ful">
         <div className="w-full h-full bg-rose-900/20 flex items-center justify-center"><Flower size={80} className="text-rose-900 opacity-20" /></div>
       </Polaroid>
       <Sticker type="flower" className="-bottom-8 -right-8 rotate-12" />
     </div>
     <motion.div initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.6 }} className="max-w-xs md:max-w-sm relative z-10">
       <LinedPaper className="rotate-1">
-        <h2 className="font-['Playfair_Display'] text-3xl mb-4 text-[#8B3A3A]">{data.revealTitle}</h2>
-        <p className="font-['Reenie_Beanie'] text-2xl leading-loose text-stone-800">{data.message}</p>
-        <p className="font-['Homemade_Apple'] text-sm mt-6 text-right text-stone-500">- Chaitanya</p>
+        <h2 className="font-['Playfair_Display'] text-3xl mb-4 text-[#8B3A3A] font-bold">{data.revealTitle}</h2>
+        <p className="font-['Noto_Sans_Devanagari'] text-xl leading-loose text-stone-800">{data.message}</p>
+        <p className="font-['Homemade_Apple'] text-sm mt-6 text-right text-stone-500">- S.</p>
       </LinedPaper>
       <Tape className="-top-2 -right-2 rotate-45" />
     </motion.div>
@@ -548,18 +548,18 @@ const ProposeReveal = ({ data }) => (
     <FloatingDoodles />
     <div className="flex flex-wrap justify-center gap-6 relative z-10">
       <Polaroid color="bg-stone-300" rotation="-3deg" delay={0.2} caption="Day One">
-         <div className="w-full h-full bg-stone-300 flex items-center justify-center"><span className="font-['Playfair_Display'] text-4xl opacity-20">Then</span></div>
+         <div className="w-full h-full bg-stone-300 flex items-center justify-center"><span className="font-['Playfair_Display'] text-4xl opacity-20">Tevha</span></div>
       </Polaroid>
       <Polaroid color="bg-stone-800" rotation="2deg" delay={0.4} caption="Forever">
-         <div className="w-full h-full bg-stone-800 flex items-center justify-center"><span className="font-['Playfair_Display'] text-4xl text-white opacity-20">Now</span></div>
+         <div className="w-full h-full bg-stone-800 flex items-center justify-center"><span className="font-['Playfair_Display'] text-4xl text-white opacity-20">Atta</span></div>
       </Polaroid>
       <Tape className="top-0 left-[45%] w-32 rotate-0" />
     </div>
     <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.8 }} className="bg-[#fff9c4] p-6 shadow-lg max-w-md w-full relative rotate-1 z-10">
        <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-red-400 shadow-sm z-20"></div>
        <h2 className="font-['Playfair_Display'] text-4xl text-center mb-4">{data.revealTitle}</h2>
-       <p className="font-['Cormorant_Garamond'] text-xl text-center leading-relaxed italic">"{data.message}"</p>
-       <div className="mt-6 text-center"><span className="font-['Homemade_Apple'] text-2xl text-[#8B3A3A] border-b-2 border-[#8B3A3A]">Yes, always.</span></div>
+       <p className="font-['Noto_Sans_Devanagari'] text-xl text-center leading-relaxed italic">"{data.message}"</p>
+       <div className="mt-6 text-center"><span className="font-['Homemade_Apple'] text-2xl text-[#8B3A3A] border-b-2 border-[#8B3A3A]">Ho, nehmich.</span></div>
     </motion.div>
   </div>
 );
@@ -569,11 +569,11 @@ const ChocolateReveal = ({ data }) => (
     <FloatingDoodles />
     <div className="absolute top-4 left-4 w-full h-full border border-[#8D6E63] pointer-events-none"></div>
     <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.8 }} className="text-center space-y-6 z-10">
-      <div className="font-['Playfair_Display'] text-5xl tracking-widest text-[#D7CCC8] uppercase border-b border-[#5D4037] pb-4 inline-block">Sweetness</div>
-      <p className="font-['Cormorant_Garamond'] text-xl leading-relaxed max-w-md">{data.message}</p>
+      <div className="font-['Playfair_Display'] text-5xl tracking-widest text-[#D7CCC8] uppercase border-b border-[#5D4037] pb-4 inline-block">{data.revealTitle}</div>
+      <p className="font-['Noto_Sans_Devanagari'] text-xl leading-relaxed max-w-md">{data.message}</p>
       <div className="bg-white p-2 pb-6 shadow-lg transform rotate-3 max-w-xs mx-auto text-stone-800 mt-8">
          <div className="aspect-square bg-stone-200 mb-2 overflow-hidden"><div className="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-50"></div></div>
-         <p className="font-['Reenie_Beanie'] text-xl text-center">You are my treat.</p>
+         <p className="font-['Reenie_Beanie'] text-xl text-center">Tu majhi Treat aahes.</p>
       </div>
     </motion.div>
   </div>
@@ -593,8 +593,8 @@ const SimpleScrapbookLayout = ({ data }) => (
            </Polaroid>
         </div>
         <motion.div initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.6 }} className="max-w-xs">
-           <h2 className="font-['Homemade_Apple'] text-3xl mb-6 text-[#8B3A3A]">{data.revealTitle}</h2>
-           <p className="font-['Reenie_Beanie'] text-3xl leading-snug text-stone-800">{data.message}</p>
+           <h2 className="font-['Homemade_Apple'] text-3xl mb-6 text-[#8B3A3A] font-bold">{data.revealTitle}</h2>
+           <p className="font-['Noto_Sans_Devanagari'] text-2xl leading-snug text-stone-800">{data.message}</p>
         </motion.div>
      </div>
   </div>
@@ -602,47 +602,53 @@ const SimpleScrapbookLayout = ({ data }) => (
 
 const FinalLetterReveal = ({ data }) => {
   const letterLines = [
-  "My Dearest Akshu,",
+  "प्रिय जयू, 💞",
   "",
-  "I think my favorite part of every day",
-  "starts when you call me from the hostel,",
-  "right after lunch,",
-  "with a thousand things to say.",
+  "आज काही खास लिहावंसं वाटतंय.",
+  "शब्द शोधताना जाणवतं की,",
+  "तू माझ्या आयुष्यात आलीस",
+  "आणि सगळं हळूच बदलून गेलं.",
   "",
-  "You talk, you explain, you yap endlessly —",
-  "and I just listen.",
-  "And somehow, that makes me happier",
-  "than anything else.",
+  "तुझ्यामुळे आयुष्य शांत झालं.",
+  "गोंधळातसुद्धा एक स्थिरपणा आला.",
+  "मी जसा आहे तसाच स्वीकारणारी,",
+  "आणि तरीही मला अजून चांगला बनवणारी",
+  "एकमेव व्यक्ती म्हणजे तू.",
   "",
-  "In the evenings, when you call again",
-  "and tell me everything that happened,",
-  "point by point, detail by detail,",
-  "I realize how much I love",
-  "being the person you come back to.",
+  "तू फक्त माझी प्रेयसी नाहीस,",
+  "तू माझं घर आहेस.",
+  "जिथे थकवा उतरतो,",
+  "आणि मन निवांत होतं.",
   "",
-  "I love reminding you about your iron pills,",
-  "even when you pretend you don’t want to take them.",
-  "I love that you listen anyway.",
+  "तुझं ते मनापासून बोलणं,",
+  "लहानसहान गोष्टींवर खुश होणं,",
+  "आणि कधी कधी कारण नसतानाही चिडणं,",
+  "हे सगळं तुझंच आहे —",
+  "आणि म्हणूनच मला ते सगळं आवडतं.",
   "",
-  "And at night, when you tell me",
-  "not to cut the call,",
-  "because silence makes you nervous,",
-  "I stay.",
+  "मी परिपूर्ण नाही,",
+  "पण माझं प्रेम खरं आहे.",
+  "मला तुला बदलायचं नाही,",
+  "मला फक्त तुला जपायचं आहे.",
   "",
-  "Because loving you, for me,",
-  "is staying on the call",
-  "until you fall asleep,",
-  "knowing you feel safe.",
+  "तुझ्या प्रत्येक टप्प्यावर,",
+  "प्रत्येक निर्णयात,",
+  "प्रत्येक शांत आणि कठीण दिवशी,",
+  "मी तुझ्या सोबत उभा राहीन.",
   "",
-  "I don’t promise grand gestures.",
-  "I promise consistency.",
-  "Presence.",
-  "And a place where you can always talk,",
-  "without holding anything back.",
+  "जग कितीही गोंगाटाचं असो,",
+  "माझी नजर मात्र नेहमी",
+  "तुलाच शोधत राहील.",
   "",
-  "Happy Valentine’s Day,",
-  "my Akshu.",
+  "या व्हॅलेंटाईन डे ला,",
+  "फक्त एवढंच सांगायचं आहे —",
+  "मी तुझ्यावर प्रेम करतो.",
+  "आज, उद्या, आणि कायमच.",
+  "",
+  "नेहमी तुझाच,",
+  "S."
 ];
+
 
 
   return (
@@ -658,7 +664,7 @@ const FinalLetterReveal = ({ data }) => {
          style={{ boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
       >
          <Tape className="-top-4 right-20 rotate-3 z-20" />
-         <TornPaper className="hidden md:block absolute -top-4 left-10 rotate-[-4deg] max-w-[200px] z-20">"I love you, I love who you are and I love who you are becoming."</TornPaper>
+         <TornPaper className="hidden md:block absolute -top-4 left-10 rotate-[-4deg] max-w-[200px] z-20">"Majha tujhyavar prem aahe, tu jashi aahes tyawar ani tu jashi ghadat aahes tyawar."</TornPaper>
          <Sticker type="butterfly" className="absolute bottom-10 left-10 w-24 h-24 rotate-12 opacity-70 hidden md:block" />
          <div className="relative w-full md:w-1/3 flex flex-col gap-8 mt-12 md:mt-0">
             <Polaroid color="bg-stone-300" rotation="-6deg" delay={0.2} caption="Day 1" className="z-10"><div className="w-full h-full bg-stone-300 flex items-center justify-center opacity-30"><Heart size={40} /></div></Polaroid>
@@ -669,15 +675,15 @@ const FinalLetterReveal = ({ data }) => {
             <LinedPaper className="rotate-1 min-h-[600px]">
                <Paperclip className="absolute -top-3 right-8 text-stone-400 w-12 h-12 rotate-12 drop-shadow-md z-20" />
                <div className="text-center mb-10 mt-4">
-                  <h1 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#2A2A2A] mb-2">Forever Yours</h1>
+                  <h1 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#2A2A2A] mb-2">Kayamcha Tujha</h1>
                   <div className="w-16 h-[2px] bg-[#8B3A3A] mx-auto opacity-50"></div>
                </div>
-               <div className="font-['La_Belle_Aurore'] text-xl md:text-2xl leading-[2.2rem] text-stone-800 px-2 md:px-6">
+               <div className="font-['Noto_Sans_Devanagari'] text-xl md:text-xl leading-[2.2rem] text-stone-800 px-2 md:px-6">
                   {letterLines.map((line, i) => (
                     <motion.div key={i} initial={{ opacity: 0, x: -5 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.5, duration: 0.8 }} className={line === "" ? "h-6" : ""} style={{ transform: `rotate(${Math.random() * 1 - 0.5}deg)` }}>{line}</motion.div>
                   ))}
                </div>
-               <motion.div initial={{ opacity: 0, rotate: -5 }} whileInView={{ opacity: 1, rotate: 0 }} transition={{ delay: letterLines.length * 0.5 + 0.5, duration: 1 }} className="mt-16 text-right pr-8"><p className="font-['Homemade_Apple'] text-3xl text-[#8B3A3A] -rotate-2">Chaitanya</p></motion.div>
+               <motion.div initial={{ opacity: 0, rotate: -5 }} whileInView={{ opacity: 1, rotate: 0 }} transition={{ delay: letterLines.length * 0.5 + 0.5, duration: 1 }} className="mt-16 text-right pr-8"><p className="font-['Homemade_Apple'] text-3xl text-[#8B3A3A] -rotate-2">S.</p></motion.div>
             </LinedPaper>
             <Tape className="-bottom-4 right-1/2 translate-x-1/2 rotate-2 z-30" />
          </div>
@@ -702,7 +708,7 @@ const RevealView = ({ dayData, onBack }) => {
       <div className="w-full flex justify-between items-center p-8 z-[100] fixed top-0 left-0 right-0 pointer-events-none">
         <button onClick={onBack} className="pointer-events-auto group flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity bg-white px-6 py-3 rounded-full shadow-md border border-stone-200">
           <RotateCcw size={16} />
-          <span className="text-xs uppercase tracking-widest font-bold text-stone-600">Close Album</span>
+          <span className="text-xs uppercase tracking-widest font-bold text-stone-600">Alabm Band Kara</span>
         </button>
       </div>
       <div className="flex-grow flex items-center justify-center w-full px-4 py-24 z-10 overflow-y-auto">{renderLayout()}</div>
@@ -714,7 +720,17 @@ const RevealView = ({ dayData, onBack }) => {
 
 const StoryIntro = ({ onComplete }) => {
   const [index, setIndex] = useState(0);
-  const lines = ["Hi Akshu...", "It's me, Chaitanya.", "I've been thinking about us lately.", "About how lucky I am...", "To call you my Akshiee.", "My Bubu.", "I wanted to create something timeless.", "Not just a wish, but a memory.", "Are you ready?"];
+  const lines = [
+    "Hi Jayu...", 
+    "Me S.", 
+    "Mi khup divsanpasun aplaybaddal vichar kartoy.", 
+    "Mi kiti nashibwan aahe...", 
+    "Tula majhi 'Jayu' mhanayla.", 
+    "Majhya ayushyat, tu ekmev aahes.", 
+    "Mala kahitari kayam lakshat rahil asa banvaycha hota.", 
+    "Fakt shubhechha nahi, tar ek athvan.", 
+    "Tayar aahes?"
+  ];
   const handleNext = () => { if (index < lines.length - 1) setIndex(index + 1); else onComplete(); };
   return (
     <div onClick={handleNext} className="fixed inset-0 bg-[#0a0a0a] text-stone-200 z-[100] flex flex-col items-center justify-center cursor-pointer overflow-hidden">
@@ -737,22 +753,22 @@ const EditorialLanding = ({ days, onSelectDay, completed }) => (
   <div className="w-full bg-[#F7F5F0] text-[#2A2A2A] pb-24">
      <nav className="flex justify-between items-center py-8 px-6 md:px-12 border-b border-stone-200/60 sticky top-0 bg-[#F7F5F0]/95 backdrop-blur-sm z-40">
         <div className="text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold opacity-60">Feb 2026</div>
-        <div className="font-['Playfair_Display'] text-xl md:text-2xl tracking-tight font-semibold">CHAITANYA <span className="text-[#8B3A3A] italic">&</span> AKSHITA</div>
-        <div className="text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold opacity-60">Est. Forever</div>
+        <div className="font-['Playfair_Display'] text-xl md:text-2xl tracking-tight font-semibold">S <span className="text-[#8B3A3A] italic">&</span> JAYU💞</div>
+        <div className="text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold opacity-60">Kayamche Sobat</div>
      </nav>
      <div className="relative min-h-[75vh] flex flex-col items-center justify-center overflow-hidden px-4 py-20">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#EBE7E0] rounded-full blur-[100px] opacity-60 pointer-events-none" />
         <div className="relative z-10 text-center space-y-4 max-w-4xl mx-auto">
-           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}><span className="font-['Cormorant_Garamond'] italic text-2xl md:text-3xl text-[#8B3A3A]">For my dearest Akshiee</span></motion.div>
-           <motion.h1 initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} className="font-['Playfair_Display'] text-6xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tighter text-[#1A1A1A]">THE NEW<br/>ROMANTICS</motion.h1>
-           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} className="max-w-md mx-auto mt-8 pt-8"><p className="font-['Cormorant_Garamond'] text-lg md:text-xl leading-relaxed text-stone-600">A curated collection of moments, rituals, and memories designed just for my Bubu.</p><div className="mt-12 flex justify-center"><div className="w-[1px] h-16 bg-stone-300"></div></div></motion.div>
+           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}><span className="font-['Cormorant_Garamond'] italic text-2xl md:text-3xl text-[#8B3A3A]">Majhya priya Jayu sathi</span></motion.div>
+           <motion.h1 initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} className="font-['Playfair_Display'] text-6xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tighter text-[#1A1A1A]">APLI PREM<br/>KATHA</motion.h1>
+           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} className="max-w-md mx-auto mt-8 pt-8"><p className="font-['Cormorant_Garamond'] text-lg md:text-xl leading-relaxed text-stone-600">Fakt majhya Jayu sathi banavlele kahi khas kshan ani athvani.</p><div className="mt-12 flex justify-center"><div className="w-[1px] h-16 bg-stone-300"></div></div></motion.div>
         </div>
      </div>
      <div className="px-4 md:px-12 py-24 bg-white relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-24 bg-stone-200"></div>
         <div className="text-center mb-24 pt-12">
            <span className="font-['Cormorant_Garamond'] italic text-2xl text-[#8B3A3A]">The Collection</span>
-           <div className="relative"><h3 className="font-['Playfair_Display'] text-[5rem] md:text-[8rem] lg:text-[10rem] uppercase tracking-tighter leading-none opacity-[0.03] select-none">CHAPTERS</h3><div className="absolute inset-0 flex items-center justify-center"><div className="font-['Playfair_Display'] text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A]">Seven Days of Us</div></div></div>
+           <div className="relative"><h3 className="font-['Playfair_Display'] text-[5rem] md:text-[8rem] lg:text-[10rem] uppercase tracking-tighter leading-none opacity-[0.03] select-none">CHAPTERS</h3><div className="absolute inset-0 flex items-center justify-center"><div className="font-['Playfair_Display'] text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A]">Aple Saat Divas</div></div></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 max-w-7xl mx-auto px-4">
            {days.map((day, idx) => {
@@ -762,7 +778,7 @@ const EditorialLanding = ({ days, onSelectDay, completed }) => (
                    <div className="aspect-[3/4] bg-[#F5F5F0] relative overflow-hidden mb-6 transition-all duration-500 group-hover:shadow-2xl">
                       <div className={`absolute inset-0 transition-opacity duration-500 ${isDone ? 'opacity-100' : 'opacity-0'}`}><div className={`w-full h-full ${day.color} opacity-20`}></div></div>
                       <div className="absolute inset-0 bg-[#1A1A1A] opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-                      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"><day.icon size={48} strokeWidth={1} className={`mb-4 transition-all duration-500 ${isDone ? 'text-[#8B3A3A] scale-110' : 'text-stone-300 group-hover:text-stone-600'}`} />{isDone && <span className="font-['Homemade_Apple'] text-[#8B3A3A] text-lg -rotate-6">Unlocked</span>}</div>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"><day.icon size={48} strokeWidth={1} className={`mb-4 transition-all duration-500 ${isDone ? 'text-[#8B3A3A] scale-110' : 'text-stone-300 group-hover:text-stone-600'}`} />{isDone && <span className="font-['Homemade_Apple'] text-[#8B3A3A] text-lg -rotate-6">Ughadla</span>}</div>
                       <div className="absolute top-4 left-4 font-['Playfair_Display'] text-4xl text-stone-200 font-bold opacity-50">0{idx + 1}</div>
                    </div>
                    <div className="text-center space-y-2"><div className="text-[10px] tracking-[0.2em] uppercase text-stone-400 font-bold">{day.date}</div><h4 className="font-['Playfair_Display'] text-2xl group-hover:text-[#8B3A3A] transition-colors">{day.title}</h4><div className="w-8 h-[1px] bg-stone-300 mx-auto mt-4 group-hover:w-16 transition-all duration-500"></div></div>
@@ -771,7 +787,7 @@ const EditorialLanding = ({ days, onSelectDay, completed }) => (
            })}
         </div>
      </div>
-     <div className="py-24 text-center"><Sparkles className="inline-block text-[#8B3A3A] mb-4" size={24} /><p className="font-['Cormorant_Garamond'] italic text-xl text-stone-500">Designed with love for Akshita</p></div>
+     <div className="py-24 text-center"><Sparkles className="inline-block text-[#8B3A3A] mb-4" size={24} /><p className="font-['Cormorant_Garamond'] italic text-xl text-stone-500">Jayu sathi premne banavlele</p></div>
   </div>
 );
 
@@ -784,11 +800,12 @@ const DAYS_DATA = [
     icon: Flower, 
     component: RoseGame,
     color: "bg-rose-900",
-    revealTitle: "A Rose for Akshu",
-    message: "I didn't want to just give you a flower. I wanted to give you a garden. Thank you for making my life bloom.",
-    note: "You are my rarest find.",
+    revealTitle: "तुझ्यासाठी…",
+    message: "गुलाब सुकून जातील, पण माझं तुझ्यावरचं प्रेम कधीच सुकणार नाही. तू माझ्या आयुष्यातली ती एकमेव कळी आहेस, जिने मला पूर्ण फुलवलं.",
+    note: "तू माझ्यासाठी सगळ्यात अनमोल आहेस.",
+
     // Rec: "Perfect" (Ed Sheeran) OR "Pehli Nazar Mein" (Race)
-    musicUrl: "Pehlinazarmein.mp3" 
+    musicUrl: "Yad Lagla - Full Audio Song  Sairat  Ajay Atul  Nagraj Popatrao Manjule.mp3" 
   },
   { 
     id: 2, 
@@ -797,11 +814,12 @@ const DAYS_DATA = [
     icon: Star, 
     component: ProposeGame,
     color: "bg-stone-800",
-    revealTitle: "The Question",
-    message: "Asking you to be mine wasn't a question, Akshita. It was the easiest decision I've ever made. I choose you.",
-    note: "Every single day.",
+    revealTitle: "माझी होशील?",
+    message: "मला जगातलं काहीही नको, फक्त तू हवी आहेस. तू, तुझा सोबत, आणि आपलं भविष्य — एवढंच स्वप्न आहे माझं. ‘S’ ची ‘जयू’ होशील का?",
+    note: "फक्त तू आणि मी.",
+
     // Rec: "Marry You" (Bruno Mars) OR "Raabta" (Agent Vinod)
-    musicUrl: "Raabta.mp3" 
+    musicUrl: "Tula Pahate Re Title Song HD  Subodh Bhave, Gayatri Datar  Marathi Serial  Zee Marathi.mp3" 
   },
   { 
     id: 3, 
@@ -810,11 +828,13 @@ const DAYS_DATA = [
     icon: Gift, 
     component: ChocolateGame,
     color: "bg-[#3E2723]",
-    revealTitle: "Sweetness",
-    message: "Life can be bitter, but my Akshiee is the sweetness that makes it all worthwhile.",
-    note: "Sweeter than anything.",
+    revealTitle: "गोडवा",
+    message: "चॉकलेटचा गोडवा थोड्याच वेळात संपतो, पण तुझ्या हसण्यातला गोडवा माझा दिवस पूर्ण करतो. तू माझ्या आयुष्यातली सगळ्यात गोड गोष्ट आहेस.",
+    note: "सगळ्यांपेक्षा गोड.",
+
+
     // Rec: "Sugar" (Maroon 5) OR "Uff Teri Ada" (Kartik Calling Kartik)
-    musicUrl: "Uffteriada.mp3" 
+    musicUrl: "Kiti Sangaichay Mala (PenduJatt.Com.Se).mp3" 
   },
   { 
     id: 4, 
@@ -823,11 +843,13 @@ const DAYS_DATA = [
     icon: Smile, 
     component: TeddyGame,
     color: "bg-[#5D4037]",
-    revealTitle: "Comfort",
-    message: "Like a soft teddy, I want to be your safe place. The place you come to when the world is too loud.",
-    note: "For my cute Bubu.",
+    revealTitle: "सुरक्षित जागा",
+    message: "जसं टेडीला मिठीत घेतल्यावर बरं वाटतं, तसं मला तुझं सुरक्षित ठिकाण व्हायचं आहे. जिथे तू सगळा ताण विसरून फक्त शांतता अनुभवशील.",
+    note: "माझ्या गोड जयू साठी.",
+
+
     // Rec: "Count On Me" (Bruno Mars) OR "Tera Hone Laga Hoon" (Ajab Prem Ki Ghazab Kahani)
-    musicUrl: "Terahonelagahu.mp3" 
+    musicUrl: "य जवलग  YE JEEVLAGA YE  ANURADHA PAUDWAL, SACHIN  MARATHI ROMANTIC SONG.mp3" 
   },
   { 
     id: 5, 
@@ -836,11 +858,13 @@ const DAYS_DATA = [
     icon: Lock, 
     component: PromiseGame,
     color: "bg-[#263238]",
-    revealTitle: "My Vow",
-    message: "I promise to listen. I promise to care. I promise to be there, Akshu, even when it's hard. Especially when it's hard.",
-    note: "Cross my heart.",
+    revealTitle: "माझं वचन",
+    message: "मी तुला नेहमी गोड गोष्टी सांगण्याचं वचन देत नाही, पण जेव्हा सगळं अवघड असेल, तेव्हा तुझा हात घट्ट पकडून तुझ्या सोबत राहीन. मी तुला कधीच एकटी सोडणार नाही.",
+    note: "मनापासून.",
+
+
     // Rec: "A Thousand Years" (Christina Perri) OR "Tum Se Hi" (Jab We Met)
-    musicUrl: "Tumsehi.mp3" 
+    musicUrl: "Monsoon-Melody-–-Adhir-Man-Jhale-🌧️❤️-Ajay-Atul-x-Shreya-Ghoshal-Pooja-Sawant-Nilkanth-Master.mp3" 
   },
   { 
     id: 6, 
@@ -849,11 +873,13 @@ const DAYS_DATA = [
     icon: Cloud, 
     component: HugGame,
     color: "bg-[#455A64]",
-    revealTitle: "Warmth",
-    message: "A hug from you fixes everything. It's the only therapy I need. I'm sending you the biggest one right now.",
-    note: "Never let go.",
+    revealTitle: "उब",
+    message: "तुझी एक मिठी माझ्या सगळ्या थकव्यावर औषध आहे. तू माझ्या जवळ असतेस, तेव्हा जगातलं सगळं ओझं हलकं वाटतं. मला फक्त तुझ्या जवळ राहायचं आहे.",
+    note: "कधीच दूर जाऊ नकोस.",
+
+
     // Rec: "Photograph" (Ed Sheeran) OR "Jaadu Ki Jhappi" (Rang De Basanti)
-    musicUrl: "Photograph.mp3" 
+    musicUrl: "Sairat Zaala Ji - Official Full Video  Sairat  Ajay Atul  Nagraj Popatrao Manjule.mp3" 
   },
   { 
     id: 7, 
@@ -862,11 +888,13 @@ const DAYS_DATA = [
     icon: Heart, 
     component: KissGame,
     color: "bg-[#B71C1C]",
-    revealTitle: "Spark",
-    message: "It's not just a kiss. It's the electricity, the silence, and the noise all at once.",
-    note: "Just one more.",
+    revealTitle: "थांबणं",
+    message: "चुंबन म्हणजे फक्त ओठांचा स्पर्श नाही, तर दोन मनांचं एकत्र थांबणं आहे. तू जवळ असतेस, तेव्हा बाकी सगळं थांबतं. फक्त तू आणि मी.",
+    note: "आणखी एक.",
+
+
     // Rec: "Kiss Me" (Sixpence None The Richer) OR "Ishq Wala Love" (SOTY)
-    musicUrl: "Ishqwalalove.mp3" 
+    musicUrl: "Antari Vajati (Sang Na Re Mana) - Zenda  Romantic Marathi Songs  Pushkar Shroti, Santosh Juvekar.mp3" 
   },
   { 
     id: 8, 
@@ -875,11 +903,10 @@ const DAYS_DATA = [
     icon: Sparkles, 
     component: FinalSurpriseGame,
     color: "bg-red-900",
-    revealTitle: "Forever Yours",
-    message: "Open your heart...",
-    note: "Always.",
+    revealTitle: "कायमचा तुझा",
+    note: "नेहमीच.",
     // Rec: "Lover" (Taylor Swift) OR "Kesariya" (Brahmastra)
-    musicUrl: "Lover.mp3" 
+    musicUrl: "Tuzyat-Jiv-Rangala.mp3" 
   },
 ];
 
@@ -930,7 +957,7 @@ export default function ValentineWeekApp() {
               <button onClick={handleBackToMenu} className="absolute top-6 left-6 p-2 hover:bg-stone-50 rounded-full transition-colors"><X size={20} className="text-stone-400" /></button>
               <div className="text-center mb-10"><span className="font-['Cormorant_Garamond'] italic text-stone-500 text-lg">The Ritual</span><h2 className="font-['Playfair_Display'] text-4xl mt-2">{activeDay.title}</h2></div>
               <ActiveGame onWin={handleWin} />
-              <div className="mt-8 text-center"><div className="w-8 h-[1px] bg-stone-200 mx-auto mb-4"></div><p className="font-['Cormorant_Garamond'] text-stone-400 text-sm tracking-wide">Complete to unlock memory</p></div>
+              <div className="mt-8 text-center"><div className="w-8 h-[1px] bg-stone-200 mx-auto mb-4"></div><p className="font-['Cormorant_Garamond'] text-stone-400 text-sm tracking-wide">Purna karun athvan ughad</p></div>
             </div>
           </motion.div>
         )}
