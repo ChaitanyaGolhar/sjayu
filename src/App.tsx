@@ -752,7 +752,7 @@ const StoryIntro = ({ onComplete }) => {
 const EditorialLanding = ({ days, onSelectDay, completed }) => (
   <div className="w-full bg-[#F7F5F0] text-[#2A2A2A] pb-24">
      <nav className="flex justify-between items-center py-8 px-6 md:px-12 border-b border-stone-200/60 sticky top-0 bg-[#F7F5F0]/95 backdrop-blur-sm z-40">
-        <div className="text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold opacity-60">Feb 2026</div>
+        <div className="text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold opacity-60">2025</div>
         <div className="font-['Playfair_Display'] text-xl md:text-2xl tracking-tight font-semibold">S <span className="text-[#8B3A3A] italic">&</span> JAYU💞</div>
         <div className="text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold opacity-60">Kayamche Sobat</div>
      </nav>
