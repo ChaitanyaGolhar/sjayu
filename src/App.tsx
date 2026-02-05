@@ -89,7 +89,8 @@ const FloatingDoodles = () => (
 
 // --- MUSIC PLAYER ---
 const BackgroundMusic = ({ isPlaying, togglePlay, currentTrack }) => {
-  const audioRef = useRef(new Audio(currentTrack));
+  // Use encodeURI to handle spaces and special characters in filenames safely
+  const audioRef = useRef(new Audio(encodeURI(currentTrack)));
   const [hasInteracted, setHasInteracted] = useState(false);
 
   useEffect(() => {
@@ -99,10 +100,10 @@ const BackgroundMusic = ({ isPlaying, togglePlay, currentTrack }) => {
       else {
         clearInterval(fadeOut);
         audioRef.current.pause();
-        audioRef.current.src = currentTrack;
+        audioRef.current.src = encodeURI(currentTrack); // Ensure encoded URL
         audioRef.current.load();
         if (isPlaying && hasInteracted) {
-          audioRef.current.play().catch(() => {});
+          audioRef.current.play().catch((e) => console.log("Audio play failed:", e));
           audioRef.current.volume = 0;
           const fadeIn = setInterval(() => {
              if (audioRef.current.volume < 0.9) audioRef.current.volume += 0.1;
@@ -291,7 +292,8 @@ const ProposeGame = ({ onWin }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-80 w-full relative overflow-hidden bg-stone-50/50">
+    // Added touch-none here to prevent scrolling while dragging on mobile
+    <div className="flex flex-col items-center justify-center h-80 w-full relative overflow-hidden bg-stone-50/50 touch-none">
       {!success ? (
         <>
           <p className="absolute top-4 font-['Playfair_Display'] text-xl text-stone-600 animate-pulse">Angathi majhya botat ghal...</p>
@@ -777,7 +779,7 @@ const EditorialLanding = ({ days, onSelectDay, completed }) => (
                 <motion.div key={day.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} onClick={() => onSelectDay(day)} className="group cursor-pointer">
                    <div className="aspect-[3/4] bg-[#F5F5F0] relative overflow-hidden mb-6 transition-all duration-500 group-hover:shadow-2xl">
                       <div className={`absolute inset-0 transition-opacity duration-500 ${isDone ? 'opacity-100' : 'opacity-0'}`}><div className={`w-full h-full ${day.color} opacity-20`}></div></div>
-                      <div className="absolute inset-0 bg-[#1A1A1A] opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-[#1A1A1A] opacity-0 group-hover:opacity-1 transition-opacity duration-500" />
                       <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"><day.icon size={48} strokeWidth={1} className={`mb-4 transition-all duration-500 ${isDone ? 'text-[#8B3A3A] scale-110' : 'text-stone-300 group-hover:text-stone-600'}`} />{isDone && <span className="font-['Homemade_Apple'] text-[#8B3A3A] text-lg -rotate-6">Ughadla</span>}</div>
                       <div className="absolute top-4 left-4 font-['Playfair_Display'] text-4xl text-stone-200 font-bold opacity-50">0{idx + 1}</div>
                    </div>
@@ -819,7 +821,8 @@ const DAYS_DATA = [
     note: "फक्त तू आणि मी.",
 
     // Rec: "Marry You" (Bruno Mars) OR "Raabta" (Agent Vinod)
-    musicUrl: "Tula Pahate Re Title Song HD  Subodh Bhave, Gayatri Datar  Marathi Serial  Zee Marathi.mp3" 
+    // Updated: Switched to existing file Man-Udhan-Varyache.mp3 as Tula Pahate Re was missing
+    musicUrl: "Man-Udhan-Varyache.mp3" 
   },
   { 
     id: 3, 
